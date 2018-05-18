@@ -1,0 +1,69 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{correction}
+
+\RequirePackage{xkeyval}
+\RequirePackage{listings,plistings,xcolor}
+\RequirePackage{tikz}
+\usetikzlibrary{calc}
+\usetikzlibrary{arrows.meta}
+
+\tikzset{block/.style={
+    rectangle,
+    draw=black,
+    rounded corners}}
+
+% http://d.hatena.ne.jp/zrbabbler/20130302/1362228901
+\RequirePackage{pxpgfmark} % remember picture を可能にする
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \makecomment コマンドの定義
+% xkeyval.sty を使ってキーワード引数を処理
+\makeatletter
+\define@cmdkey[correction]{mkcom}[cor@mkcom@]{backgroundcolor}[red!30]{}
+\define@cmdkey[correction]{mkcom}[cor@mkcom@]{arrowcolor}[red]{}
+\define@cmdkey[correction]{mkcom}[cor@mkcom@]{shift}[(0,0)]{}
+\presetkeys[correction]{mkcom}{backgroundcolor,arrowcolor,shift}{}
+
+\newcommand{\coordinateat}[2]{\coordinate (#1) at #2;}
+\newcommand{\makecomment}[3][]{
+  \setkeys[correction]{mkcom}{#1}
+  \expandafter\edef\csname cor@mkcom@backgroundcolor@#2\endcsname{\cor@mkcom@backgroundcolor}
+  \expandafter\edef\csname cor@mkcom@arrowcolor@#2\endcsname{\cor@mkcom@arrowcolor}
+  \expandafter\edef\csname cor@mkcom@shift@#2\endcsname{\cor@mkcom@shift}
+  \expandafter\newcommand\csname commentname@#2\endcsname{\begin{tikzpicture}[remember picture, overlay]
+      \coordinate (X) at (0,3pt);
+      \path let \p1=\csname cor@mkcom@shift@#2\endcsname in
+      node[block, fill=\csname cor@mkcom@backgroundcolor@#2\endcsname, anchor=east, text width=0.3\textwidth]
+      (comment) at ($(current page.east |- X) + (-10pt,0) + (\p1)$)  {#3};
+      \draw[color=\csname cor@mkcom@arrowcolor@#2\endcsname, -{Latex[length=3mm,width=2mm]}] (comment) -- (X);
+    \end{tikzpicture}}
+}
+\newcommand{\usecomment}[1]{\csname commentname@#1\endcsname}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% listingsの設定
+\definecolor{OliveGreen}{cmyk}{0.64,0,0.95,0.40}
+\definecolor{colFunc}{rgb}{1,0.07,0.54}
+\definecolor{CadetBlue}{cmyk}{0.62,0.57,0.23,0}
+\definecolor{Brown}{cmyk}{0,0.81,1,0.60}
+\definecolor{colID}{rgb}{0.63,0.44,0}
+
+\lstset{
+  language=[LaTeX]TeX,
+  basicstyle={\ttfamily\small},
+  keywordstyle={\color{OliveGreen}},
+  keywordstyle={[2]\color{colFunc}},
+  keywordstyle={[3]\color{CadetBlue}},
+  commentstyle={\color{Brown}},
+  % identifierstyle={\color{colID}},
+  stringstyle=\color{blue},
+  tabsize=2,
+  frame=trBL,
+  numbers=left,
+  numberstyle={\ttfamily\small},
+  breaklines=true,
+  backgroundcolor={\color[gray]{.95}},
+  captionpos=b,
+  linewidth=0.8\textwidth
+}

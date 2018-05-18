@@ -1,0 +1,17 @@
+*.aux
+*.dvi
+*.log
+*.pdf
+*.bbl
+*.blg
+*.toc
+*.out
+*.fdb_latexmk
+*.fls
+*.sed
+*.synctex.gz
+
+# created by auctex
+auto/
+# created by elsarticle.sty?
+*.spl
