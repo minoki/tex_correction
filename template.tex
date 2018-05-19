@@ -1,0 +1,13 @@
+\documentclass[dvipdfmx]{jsarticle}
+
+\usepackage{correction}
+\newcommand{\bs}{\symbol{"5C}}
+
+\begin{document}
+\makecomment{a}{hoge}
+
+\begin{lstlisting}[escapechar=@]
+% Copy TeX code here!@\usecomment{a}@
+\end{lstlisting}
+
+\end{document}
