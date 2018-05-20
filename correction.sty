@@ -50,7 +50,7 @@
   \cor@save{mkcom}{yshift}{#2}
   \cor@save{mkcom}{width}{#2}
   % \usecommentで呼び出す処理
-  \expandafter\newcommand\csname commentname@#2\endcsname{
+  \expandafter\newcommand\csname commentname@#2\endcsname{%
     \begin{tikzpicture}[remember picture, overlay]
       \coordinate (X) at (0,3pt);
       % 予めletしないとうまくいかなかった．座標の足し算のところに直接書くと何故かエラー
