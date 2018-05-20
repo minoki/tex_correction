@@ -1,0 +1,71 @@
+\documentclass{ltjsarticle}
+
+\usepackage{correction}
+\newcommand{\bs}{\symbol{"5C}}
+
+\begin{document}
+\makecomment{theorem}{theorem 環境を使いましょう．}
+\makecomment{displaystyle}{分数が潰れていて読み辛いので，\bs displaystyle を使ってディスプレイ数式にした方が良い(?)}
+\makecomment[yshift=-20pt]{comma}{カンマの後に空白を入れましょう}
+
+\begin{lstlisting}[escapechar=@]
+\documentclass{jsarticle}
+\usepackage{amsmath,amssymb}
+\begin{document}
+
+\section{調和関数}
+\subsection{調和関数}
+
+\begin{flushright}
+$D\subset \mathbb{C} $ : 領域,連結,開集合
+
+$z=x+iy$とする。
+\end{flushright}
+
+\underline{\textbf{Def 1.1.1}}@\usecomment{theorem}@
+
+関数$u \colon D \to \mathbb{R}$が調和（harmonic）
+
+$ \Leftrightarrow u \in C^2(D) $ かつ $ \triangle u = 0 $ on $ D $
+
+\begin{itemize}
+	\item $ \triangle = \frac{\partial ^2}{\partial x^2} + \frac{\partial ^2}{\partial y^2} = 4\frac{\partial ^2}{\partial z \partial \bar{z}}$@\usecomment{displaystyle}@
+
+	$\frac{\partial}{\partial z} = \frac{1}{2} \frac{\partial}{\partial x} + \frac{1}{2i} \frac{\partial}{\partial y}$,
+	$\frac{\partial}{\partial \bar{z}} = \frac{1}{2} \frac{\partial}{\partial x} + \frac{1}{-2i} \frac{\partial}{\partial y} $
+
+	\item $ \triangle u $ はHessian $ \begin{pmatrix} u_{xx} & u_{xy} \\ u_{yx} & u_{yy} \end{pmatrix} $ のtrace
+
+\end{itemize}
+
+\underline{ex}@\usecomment{theorem}@
+
+\begin{itemize}
+	\item $u = x^2 - y^2$,@\usecomment{comma}@$v = x^2-y^2$
+	\item $u =\log \sqrt{x^2+y^2} = \log r$,@\usecomment{comma}@$v= \tan ^{-1} \frac{y}{x} = \theta $
+
+	（$ \triangle r = \frac{1}{r} \neq 0 $）
+\end{itemize}
+
+\underline{\textbf{Prop 1.1.2}}
+
+$ f \colon D \to \mathbb{C} $　正則　に対し、
+
+Re$f$,Im$f$は$D$上調和。
+
+\underline{pf}
+
+Cauchy-Riemannの等式より。　$\blacksquare$
+
+局所的にはこの逆が成立。
+
+$\linebreak$
+
+
+(中略 by 若月)
+
+
+\end{document}
+\end{lstlisting}
+
+\end{document}
