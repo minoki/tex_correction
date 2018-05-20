@@ -1,26 +1,19 @@
 \documentclass[dvipdfmx]{jsarticle}
-
-\usepackage[cache=false]{minted}
-
+%%%%%%
 \usepackage{correction}
 \newcommand{\bs}{\symbol{"5C}}
-
-\setminted[LaTeX]{ %
-    linenos=true,             % Line numbers
-    autogobble=true,          % Automatically remove common whitespace
-    %bgcolor=dark-bg,
-    frame=lines,
-    framesep=2mm,
-    % fontsize=\footnotesize
-  }
 
 \begin{document}
 \makecomment{theorem}{theorem 環境を使いましょう．}
 \makecomment{displaystyle}{分数が潰れていて読み辛いので，\bs displaystyle を使ってディスプレイ数式にした方が良い(?)}
-\makecomment[yshift=-20pt]{comma}{カンマの後に空白を入れましょう}
+\makecomment[yshift=0pt]{comma}{カンマの後に空白を入れましょう}
+\makecomment{usecommentOption}{\bs usecommentのオプション引数に負の値を指定するときは，予め(corlistingの外で)defしておく必要がある (何故？)}
 
-% \begin{lstlisting}[escapechar=@]
-\begin{minted}[breaklines, escapeinside=@@]{LaTeX}
+
+\newcommand{\hoge}{-30pt}
+\newcommand{\fuga}{-100pt}
+
+\begin{corlisting}
 \documentclass{jsarticle}
 \usepackage{amsmath,amssymb}
 \begin{document}
@@ -53,8 +46,8 @@ $ \Leftrightarrow u \in C^2(D) $ かつ $ \triangle u = 0 $ on $ D $
 \underline{ex}@\usecomment{theorem}@
 
 \begin{itemize}
-	\item $u = x^2 - y^2$,@\usecomment{comma}@$v = x^2-y^2$
-	\item $u =\log \sqrt{x^2+y^2} = \log r$,@\usecomment{comma}@$v= \tan ^{-1} \frac{y}{x} = \theta $
+	\item $u = x^2 - y^2$,@\usecomment[20pt]{comma}@$v = x^2-y^2$
+  \item $u =\log \sqrt{x^2+y^2} = \log r$,@\usecomment[\hoge]{comma}\usecomment[\fuga]{usecommentOption}@$v= \tan ^{-1} \frac{y}{x} = \theta $
 
 	（$ \triangle r = \frac{1}{r} \neq 0 $）
 \end{itemize}
@@ -74,12 +67,11 @@ Cauchy-Riemannの等式より。　$\blacksquare$
 $\linebreak$
 
 
-(中略 by 若月)
+(中略 by 若月)@\usecomment{comma}@
 
 
 \end{document}
-\end{minted}
-% \end{lstlisting}
+\end{corlisting}
 
 
 \end{document}

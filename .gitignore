@@ -15,3 +15,5 @@
 auto/
 # created by elsarticle.sty?
 *.spl
+
+*.listing
