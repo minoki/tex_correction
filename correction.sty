@@ -79,6 +79,36 @@
 % \newcommand{\cor@commentshift}{(-10pt, 0)} % listings のとき
 \newcommand{\cor@commentshift}{(-30pt, 0)} % minted のとき
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 下線
+\define@cmdkey[correction]{ul}[cor@ul@]{key}[ulkey]{}
+\define@cmdkey[correction]{ul}[cor@ul@]{xshift}[0pt]{}
+\define@cmdkey[correction]{ul}[cor@ul@]{yshift}[0pt]{}
+\presetkeys[correction]{ul}{key,xshift,yshift}{}
+\newcommand{\ulstart}[1][]{%
+  \setkeys[correction]{ul}{#1}
+  \begin{tikzpicture}[remember picture, overlay]
+    \coordinate (\cor@ul@key) at (\cor@ul@xshift,\cor@ul@yshift);
+  \end{tikzpicture}
+}
+\newcommand{\ulend}[1][]{%
+  \setkeys[correction]{ul}{#1}
+  \begin{tikzpicture}[remember picture, overlay]
+    \draw[color=orange] (\cor@ul@key) -- (\cor@ul@xshift,\cor@ul@yshift);
+  \end{tikzpicture}
+}
+% 四角形
+\newcommand{\boxstart}[1][box]{%
+  \begin{tikzpicture}[remember picture, overlay]
+    \coordinate (#1) at (0,10pt);
+  \end{tikzpicture}
+}
+\newcommand{\boxend}[1][box]{%
+  \begin{tikzpicture}[remember picture, overlay]
+    \draw[color=blue] (#1) rectangle (0,0);
+  \end{tikzpicture}
+}
+
 \makeatother
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
