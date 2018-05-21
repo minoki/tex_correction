@@ -7,11 +7,10 @@
 \makecomment{theorem}{theorem 環境を使いましょう．}
 \makecomment{displaystyle}{分数が潰れていて読み辛いので，\bs displaystyle を使ってディスプレイ数式にした方が良い(?)}
 \makecomment[yshift=0pt]{comma}{カンマの後に空白を入れましょう}
-\makecomment{usecommentOption}{\bs usecommentのオプション引数に負の値を指定するときは，予め(corlistingの外で)defしておく必要がある (何故？)}
+\makecomment{usecommentOption}{\bs usecommentのオプション引数に負の値を指定するときは，予め(corlistingの外で)defしておく必要がある(何故？)．マイナス記号だけをdefしておけば良い}
 
 
-\newcommand{\hoge}{-30pt}
-\newcommand{\fuga}{-100pt}
+\newcommand{\minus}{-}
 
 \begin{corlisting}
 \documentclass{jsarticle}
@@ -47,7 +46,7 @@ $ \Leftrightarrow u \in C^2(D) $ かつ $ \triangle u = 0 $ on $ D $
 
 \begin{itemize}
 	\item $u = x^2 - y^2$,@\usecomment[20pt]{comma}@$v = x^2-y^2$
-  \item $u =\log \sqrt{x^2+y^2} = \log r$,@\usecomment[\hoge]{comma}\usecomment[\fuga]{usecommentOption}@$v= \tan ^{-1} \frac{y}{x} = \theta $
+  \item $u =\log \sqrt{x^2+y^2} = \log r$,@\usecomment[\minus30pt]{comma}\usecomment[\minus100pt]{usecommentOption}@$v= \tan ^{-1} \frac{y}{x} = \theta $
 
 	（$ \triangle r = \frac{1}{r} \neq 0 $）
 \end{itemize}
