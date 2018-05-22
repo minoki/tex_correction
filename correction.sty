@@ -167,21 +167,9 @@
 \usepackage[cache=false]{minted}
 \usepackage[skins,minted,breakable]{tcolorbox}
 \usemintedstyle{murphy}
-\newtcblisting{corlisting}{
+\newcommand{\tcboptions}{%
   enhanced,
   listing only,
-  minted options={
-    %frame=lines,
-    %framesep=2mm,
-    baselinestretch=0.7,
-    % bgcolor=lightgray,
-    % fontsize=\footnotesize,
-    linenos,
-    breaklines,
-    breakafter=.,
-    breaksymbolleft=,
-    escapeinside=@@,
-  },
   minted language=LaTeX,
   colback=gray!10!white,
   boxrule=0pt,
@@ -190,4 +178,21 @@
   borderline={0.4pt}{0pt}{black},
   breakable=unlimited,
   width=0.77\textwidth,
+}
+\newcommand{\mintedoptions}{%
+  % frame=lines,
+  % framesep=2mm,
+  baselinestretch=0.7,
+  % bgcolor=lightgray,
+  % fontsize=\footnotesize,
+  linenos,
+  breaklines,
+  breakafter=.,
+  breaksymbolleft=,
+  escapeinside=@@,
+  breakaftersymbolpre=,
+}
+\newcommand{\newtcblistingExpand}[2]{%
+  \edef\args@newtcblisting{{#1}{#2}}%
+  \expandafter\newtcblisting\args@newtcblisting%
 }
