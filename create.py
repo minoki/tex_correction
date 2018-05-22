@@ -5,7 +5,6 @@ import sys, os
 template_before = r"""\documentclass[dvipdfmx]{jsarticle}
 \usepackage{correction}
 \newtcblistingExpand{corlisting}{\tcboptions,minted options={\mintedoptions}}
-\newcommand{\bs}{\symbol{"5C}}
 \newcommand{\minus}{-}
 \let\m\minus
 

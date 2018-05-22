@@ -74,10 +74,10 @@
 }
 % 一つ目の引数でy方向のshiftを指定できる．
 % ただし，escape中に負の値を指定する場合は，(直に書くのではなく)予めnewcommandなどをしておかないとダメ
-\newcommand{\usecomment}[2][]{\csname commentname@#2\endcsname[#1]}
+\newcommand{\usecomment}[2][0pt]{\csname commentname@#2\endcsname[#1]}
 
 % \newcommand{\cor@commentshift}{(-10pt, 0)} % listings のとき
-\newcommand{\cor@commentshift}{(-30pt, 0)} % minted のとき
+\newcommand{\cor@commentshift}{(-30pt, 15pt)} % minted のとき
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 下線
@@ -86,10 +86,10 @@
 \define@cmdkey[correction]{uls}[cor@uls@]{yshift}[0pt]{}
 \presetkeys[correction]{uls}{key,xshift,yshift}{}
 \newcommand{\ulstart}[1][]{%
-  \setkeys[correction]{uls}{#1}
+  \setkeys[correction]{uls}{#1}%
   \begin{tikzpicture}[remember picture, overlay]
     \coordinate (\cor@uls@key) at ($(\cor@uls@xshift,\cor@uls@yshift)+(0,\cor@ulyshift)$);
-  \end{tikzpicture}
+  \end{tikzpicture}%
 }
 \define@cmdkey[correction]{ule}[cor@ule@]{key}[ulkey]{}
 \define@cmdkey[correction]{ule}[cor@ule@]{xshift}[0pt]{}
@@ -98,10 +98,10 @@
 \define@cmdkey[correction]{ule}[cor@ule@]{linewidth}[1.3]{}
 \presetkeys[correction]{ule}{key,xshift,yshift,color,linewidth}{}
 \newcommand{\ulend}[1][]{%
-  \setkeys[correction]{ule}{#1}
+  \setkeys[correction]{ule}{#1}%
   \begin{tikzpicture}[remember picture, overlay]
     \draw[color=\cor@ule@color, line width=\cor@ule@linewidth] (\cor@ule@key) -- ($(\cor@ule@xshift,\cor@ule@yshift)+(0,\cor@ulyshift)$);
-  \end{tikzpicture}
+  \end{tikzpicture}%
 }
 \newcommand{\cor@ulyshift}{-2pt}
 % 四角形
@@ -110,10 +110,10 @@
 \define@cmdkey[correction]{boxs}[cor@boxs@]{yshift}[0pt]{}
 \presetkeys[correction]{boxs}{key,xshift,yshift}{}
 \newcommand{\boxstart}[1][]{%
-  \setkeys[correction]{boxs}{#1}
+  \setkeys[correction]{boxs}{#1}%
   \begin{tikzpicture}[remember picture, overlay]
     \coordinate (\cor@boxs@key) at ($(0,\cor@boxstartyshift)+(\cor@boxs@xshift,\cor@boxs@yshift)$);
-  \end{tikzpicture}
+  \end{tikzpicture}%
 }
 \define@cmdkey[correction]{boxe}[cor@boxe@]{key}[boxkey]{}
 \define@cmdkey[correction]{boxe}[cor@boxe@]{xshift}[0pt]{}
@@ -125,7 +125,7 @@
   \setkeys[correction]{boxe}{#1}%
   \begin{tikzpicture}[remember picture, overlay]
     \draw[color=\cor@boxe@color, line width=\cor@boxe@linewidth] (\cor@boxe@key) rectangle ($(0,\cor@boxendyshift)+(\cor@boxe@xshift,\cor@boxe@yshift)$);
-  \end{tikzpicture}
+  \end{tikzpicture}%
 }
 \newcommand{\cor@boxstartyshift}{10pt}
 \newcommand{\cor@boxendyshift}{-2pt}
