@@ -10,6 +10,7 @@ template_before = r"""\documentclass[dvipdfmx]{jsarticle}
 
 \begin{document}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{corlisting}
 """
 
