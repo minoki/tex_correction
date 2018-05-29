@@ -31,7 +31,8 @@
 \define@cmdkey[correction]{mkcom}[cor@mkcom@]{xshift}[0]{}
 \define@cmdkey[correction]{mkcom}[cor@mkcom@]{yshift}[0]{}
 \define@cmdkey[correction]{mkcom}[cor@mkcom@]{width}[\cor@commentwidth]{}
-\presetkeys[correction]{mkcom}{backgroundcolor,arrowcolor,shift,xshift,yshift,width}{}
+\define@cmdkey[correction]{mkcom}[cor@mkcom@]{arrowopacity}[1]{}
+\presetkeys[correction]{mkcom}{backgroundcolor,arrowcolor,shift,xshift,yshift,width,arrowopacity}{}
 
 % 基本的には\letと同じ．
 % ただし，control sequenceを直接指定するのではなく，\csnameのように文字列で指定する
@@ -54,6 +55,7 @@
   \cor@save{mkcom}{xshift}{#2}
   \cor@save{mkcom}{yshift}{#2}
   \cor@save{mkcom}{width}{#2}
+  \cor@save{mkcom}{arrowopacity}{#2}
   % \usecommentで呼び出す処理
   \expandafter\newcommand\csname commentname@#2\endcsname[1][0pt]{%
     \begin{tikzpicture}[remember picture, overlay]
@@ -69,6 +71,7 @@
            text width=\cor@load{mkcom}{width}{#2}]
         (comment) at ($(current page.east |- X) + (0,##1) + (\p0) + (\p1) + (\p2)$)  {#3};
       \draw[color=\cor@load{mkcom}{arrowcolor}{#2},
+            opacity=\cor@load{mkcom}{arrowopacity}{#2},
             -{Latex[length=3mm,width=2mm]}]
         (comment) -- (X);
     \end{tikzpicture}}
