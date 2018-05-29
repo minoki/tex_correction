@@ -47,15 +47,15 @@
 
 \newcommand{\makecomment}[3][]{
   % キーワード引数の処理
-  \setkeys[correction]{mkcom}{#1}
+  \setkeys[correction]{mkcom}{#1}%
   % キーワード引数を\usecommentから呼び出すために保存
-  \cor@save{mkcom}{backgroundcolor}{#2}
-  \cor@save{mkcom}{arrowcolor}{#2}
-  \cor@save{mkcom}{shift}{#2}
-  \cor@save{mkcom}{xshift}{#2}
-  \cor@save{mkcom}{yshift}{#2}
-  \cor@save{mkcom}{width}{#2}
-  \cor@save{mkcom}{arrowopacity}{#2}
+  \cor@save{mkcom}{backgroundcolor}{#2}%
+  \cor@save{mkcom}{arrowcolor}{#2}%
+  \cor@save{mkcom}{shift}{#2}%
+  \cor@save{mkcom}{xshift}{#2}%
+  \cor@save{mkcom}{yshift}{#2}%
+  \cor@save{mkcom}{width}{#2}%
+  \cor@save{mkcom}{arrowopacity}{#2}%
   % \usecommentで呼び出す処理
   \expandafter\newcommand\csname commentname@#2\endcsname[1][0pt]{%
     \begin{tikzpicture}[remember picture, overlay]
@@ -74,7 +74,7 @@
             opacity=\cor@load{mkcom}{arrowopacity}{#2},
             -{Latex[length=3mm,width=2mm]}]
         (comment) -- (X);
-    \end{tikzpicture}}
+    \end{tikzpicture}}%
 }
 % 一つ目の引数でy方向のshiftを指定できる．
 % ただし，escape中に負の値を指定する場合は，(直に書くのではなく)予めnewcommandなどをしておかないとダメ
