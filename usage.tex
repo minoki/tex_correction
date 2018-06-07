@@ -40,6 +40,7 @@
              yshift=-50pt,
              width=0.8\textwidth]
              {option}{オプションマシマシのコメントです．表示位置，幅，背景色，矢印の色を変更できます．}
+\makecomment[arrowopacity=0,yshift=-70pt,backgroundcolor=blue!20]{opacity}{矢印を非表示(実装としては透明)にすることもできる}
 
 \begin{corlisting}
 \documentclass{jsarticle}
@@ -56,7 +57,7 @@ $\int_0^1xdx@\usecomment{math}@=\frac{1}{2}$
 \end{itemize}
 \usecomment のオプション引数でy方向のshiftを指定できるが，
 何故かエスケープ中に - を直接書けない(mintedのバグ？仕様？)．
-とりあえずの対策として，予め \newcommand してある．
+とりあえずの対策として，予め \newcommand してある．@\usecomment{opacity}@
 
 @\ulstart@文章に下線@\ulend@を引いたり，@\boxstart@四角で囲ったり@\boxend@もできる．
 
