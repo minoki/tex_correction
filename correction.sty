@@ -18,7 +18,6 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \makecomment コマンドの定義
-\makeatletter
 % minted + tcblisting だと，mintedの内側では\textwidthの値が小さくなってるので，
 % 予め代入しておく必要がある．
 \newlength{\cor@commentwidth}
@@ -133,8 +132,6 @@
 }
 \newcommand{\cor@boxstartyshift}{10pt}
 \newcommand{\cor@boxendyshift}{-2pt}
-
-\makeatother
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % listingsの設定
