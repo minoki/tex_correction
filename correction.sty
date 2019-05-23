@@ -16,6 +16,18 @@
 % http://d.hatena.ne.jp/zrbabbler/20130302/1362228901
 \RequirePackage{pxpgfmark} % remember picture を可能にする
 
+% デフォルトではverbatim系の環境中では HYPHEN-MINUS - 等の文字がアクティブ化されている．
+% これはリガチャを抑止するためだが，効力がescapeinsideで指定したエスケープ部分にも及んでしまうため，我々としては不都合である．
+% そのため，HYPHEN-MINUSをリガチャ抑止の対象から外し，アクティブ化を行わないようにする．
+% 幸い，デフォルトのComputer Modern系のタイプライター体ではハイフン類のリガチャは行われないようなので，組版結果に与える影響は少ないと思われる．
+% リガチャ抑止の対象を変更するには \verbatim@nolig@list というマクロをいじるが，このマクロがすでに何者かによって変更されていた場合は警告を発する．
+\def\cor@default@noligs{\do\`\do\<\do\>\do\,\do\'\do\-}
+\ifx\verbatim@nolig@list\cor@default@noligs
+  \def\verbatim@nolig@list{\do\`\do\<\do\>\do\,\do\'}
+\else
+  \PackageWarning{correction}{\protect\verbatim@nolig@list\space is modified by somebody else}
+\fi
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \makecomment コマンドの定義
 % minted + tcblisting だと，mintedの内側では\textwidthの値が小さくなってるので，
