@@ -5,8 +5,6 @@ import sys, os, codecs, chardet
 template_before = r"""\documentclass[dvipdfmx]{jsarticle}
 \usepackage{correction}
 \newtcblistingExpand{corlisting}{\tcboptions,minted options={\mintedoptions}}
-\newcommand{\minus}{-}
-\let\m\minus
 
 \begin{document}
 
