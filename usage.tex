@@ -25,6 +25,8 @@
         \verb|/path/to/correction_report.tex|に添削用のファイルが生成される．
         (基本的にはコピペするだけだが，\verb|minted|のバグ(？)を回避するために，タブ文字をスペース2つに置換している)
       \item タイプセットは\verb|platex|だが，\verb|minted|を使うために\verb|-shell-escape|オプションが必要．
+        また，正しい出力を得るには複数回のタイプセットが必要となる．
+        適宜latexmkなりcluttexなりを使うと良いだろう．
       \item 受講生の書いたコードによっては，
         minted内のエスケープ文字や改行位置を変更したい場合もあるかもしれない．
         その場合は，この文章の\TeX ソース冒頭の\verb|\newtcblistingExpand|あたりのコメントを参考にすること．
