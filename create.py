@@ -19,7 +19,7 @@ template_after = r"""\end{corlisting}
 """
 
 def create_from_texsrc(src):
-    src_notab = src.replace("\t", "  ")
+    src_notab = src.replace("\t", "  ").replace("\r\n", "\n")
     return template_before + src_notab + template_after
 
 def get_encoding(filepath):
